@@ -27,16 +27,12 @@ class WeatherApp:
         header_frame = ttk.Frame(self.root, padding=10)
         header_frame.pack(fill=tk.X)
 
-        # Verifica se o arquivo de ícone existe
-        icon_path = "icon.png"
-        if os.path.exists(icon_path):
-            icon = PhotoImage(file=icon_path)
-        else:
-            icon = None  # Ícone alternativo ou nenhum ícone
+        # Removido carregamento de ícone para evitar erros de formato de imagem
+        # O cabeçalho será apenas texto
 
-        if icon:
-            ttk.Label(header_frame, image=icon).pack(side=tk.LEFT, padx=5)
-            self.root.icon_image = icon  # Evita que o ícone seja coletado pelo garbage collector
+        # if icon:
+        #     ttk.Label(header_frame, image=icon).pack(side=tk.LEFT, padx=5)
+        #     self.root.icon_image = icon  # Evita que o ícone seja coletado pelo garbage collector
 
         ttk.Label(
             header_frame,
@@ -104,6 +100,8 @@ class WeatherApp:
                 result = self.queue.get_nowait()
                 if isinstance(result, Exception):
                     self.status_var.set(f"Erro: {str(result)}")
+                elif result is None:
+                    self.status_var.set("Erro ao capturar dados do site.")
                 else:
                     self.update_ui(result)
             except queue.Empty:

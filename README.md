@@ -19,25 +19,35 @@ Aplicação para captura automática de dados de temperatura e umidade de São P
    cd captador-temperatura-sp
    ```
 
-2. Instale as dependências:
+2. Crie e ative um ambiente virtual:
+   ```bash
+   python -m venv env
+   source env/bin/activate # No Windows: env\Scripts\activate
+   ```
+
+3. Instale as dependências:
    ```bash
    pip install -r requirements.txt
    ```
 
-3. Execute a aplicação:
+## Como Iniciar o Programa
+
+1. Execute o programa principal:
    ```bash
-   python src/gui.py
+   python src/main.py
    ```
+
+2. A interface gráfica será exibida, permitindo que você colete e visualize os dados de temperatura e umidade.
 
 ## Requisitos
 
 - Python 3.10 ou superior.
-- Google Chrome (última versão).
-- ChromeDriver (gerenciado automaticamente pelo `webdriver-manager`).
+- Microsoft Edge (última versão).
+- EdgeDriver (gerenciado automaticamente pelo `webdriver-manager`).
 
 ## Solução de Problemas
 
-Se encontrar erros relacionados ao Selenium, atualize o ChromeDriver:
+Se encontrar erros relacionados ao Selenium, atualize o EdgeDriver:
 ```bash
 pip install --upgrade webdriver-manager
 ```
